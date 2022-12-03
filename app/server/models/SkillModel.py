@@ -14,17 +14,3 @@ class SkillSchema(BaseModel):
                 "year": 2
             }
         }
-
-
-class UpdateSkill(BaseModel):
-    name: Optional[str]
-    year: Optional[int]
-
-    class Config:
-        schema_extra = {
-            "example": {
-                "name": "python",
-                "year": 2
-            }
-        }
-

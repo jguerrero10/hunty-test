@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, create_model
 import uuid as uuid_pkg
 
 from server.models.SkillModel import SkillSchema
@@ -39,33 +39,12 @@ class UserSchema(BaseModel):
             }
         }
 
-
-class UserUpdateModel(BaseModel):
-    UserId: Optional[uuid_pkg.UUID] = uuid_pkg.uuid4()
-    FirstName: Optional[str]
-    LastName: Optional[str]
-    Email: Optional[EmailStr]
-    YearsPreviousExperience: Optional[int]
-    Skills: Optional[List]
-
-    class Config:
-        schema_extra = {
-            "example": {
-                "UserId": "5a4ef1e0-5a93-4b30-86b0-897062e83a52",
-                "FirstName": "Test Name",
-                "LastName": "Test Last Name",
-                "Email": "un.test.no.hace.mal@gmail.com",
-                "YearsPreviousExperience": 5,
-                "Skills": [
-                    {
-                        "name": "python",
-                        "year": 2
-                    },
-                    {
-                        "name": "Java",
-                        "year": 4
-                    }
-                ]
-            }
+    @classmethod
+    def as_optional(cls):
+        annonations = cls.__fields__
+        fields = {
+            attribute: (Optional[data_type.type_], None)
+            for attribute, data_type in annonations.items()
         }
-
+        optional_model = create_model(f"Optional{cls.__name__}", **fields)
+        return optional_model
