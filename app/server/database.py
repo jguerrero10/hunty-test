@@ -12,6 +12,31 @@ user_collection = database.get_collection("user_collections")
 vacancy_collection = database.get_collection("vacancy_collections")
 
 
+def comparison(dict1: dict, dict2: dict) -> bool:
+    amount = 0
+    for i in dict1:
+        for j in dict2:
+            if i['name'] in j.values():
+                if i['year'] >= j['year']:
+                    amount += 1
+    if amount * 100 / len(dict2) >= 50:
+        return True
+    return False
+
+
+async def match_vacancies(userid: UUID):
+    match = []
+    user_data = await user_collection.find_one({"UserId": userid})
+    s = [i['name'] for i in user_data["Skills"]]
+    if user_data:
+        async for vacancy in vacancy_collection.find(
+                {"RequiredSkills.name": {'$in': s}}).collation({'locale': 'en', 'strength': 2}):
+            if comparison(user_data["Skills"], vacancy["RequiredSkills"]):
+                match.append(vacancy_helper(vacancy))
+            pass
+    return match
+
+
 async def retrieve_users():
     users = []
     async for user in user_collection.find():

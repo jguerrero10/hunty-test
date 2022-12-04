@@ -11,10 +11,10 @@ def user_helper(user) -> dict:
 def vacancy_helper(vacanty) -> dict:
     return {
         "VacancyId": vacanty["VacancyId"],
-        "CompanyName": vacanty["CompanyName"],
+        "CompanyName": vacanty["CompanyName"]["CompanyName"],
         "PositionName": vacanty["PositionName"],
         "Salary": vacanty["Salary"],
         "Currency": vacanty["Currency"],
         "VacancyLink": vacanty["VacancyLink"],
-        "RequiredSkills": vacanty["RequiredSkills"]
+        "RequiredSkills": [{skill["name"]: skill["year"]} for skill in vacanty["RequiredSkills"]]
     }
