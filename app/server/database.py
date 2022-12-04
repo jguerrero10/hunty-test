@@ -1,10 +1,14 @@
 import os
 from uuid import UUID, uuid4
 
+from urllib.parse import quote_plus
 import motor.motor_asyncio
 from server.helpers import user_helper, vacancy_helper
 
-client = motor.motor_asyncio.AsyncIOMotorClient(os.environ["DB_URL"], uuidRepresentation="standard")
+username = quote_plus(os.environ["DB_USER"])
+password = quote_plus(os.environ["DB_PASS"])
+
+client = motor.motor_asyncio.AsyncIOMotorClient(f'mongodb+srv://{username}:{password}@cluster0.htzlfvi.mongodb.net/?retryWrites=true&w=majority', uuidRepresentation="standard")
 
 database = client.skill
 
