@@ -20,3 +20,7 @@ Prueba Técnica
 
 - http://localhost:8000/docs
 
+## Deploy - Heroku
+
+- https://hunty-app-test.herokuapp.com/
+
