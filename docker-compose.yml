@@ -8,7 +8,8 @@ services:
     ports:
       - '8000:8000'
     environment:
-      - DB_URL=mongodb://db/huntyDB
+      - DB_USER=user_hunty
+      - DB_PASS=J7SFsAxPFBwLVNYI
     depends_on:
       - db
   db:

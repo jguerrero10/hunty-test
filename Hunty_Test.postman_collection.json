@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "410584db-9b4c-4cf1-94b4-e734e62312d2",
+		"name": "Hunty_Test",
+		"description": "- Solicitudes endpoints User\n- Solicitudes endpoints Vacante\n- Solicitudes endpoint Vacante-User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14213641"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Users all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}user/",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserId\": \"96b6515b-ad22-476e-914d-0e0f618863d2\",\r\n    \"FirstName\": \"Joel\",\r\n  \"LastName\": \"Guerrero\",\r\n  \"Email\": \"joelgur10@gmail.com\",\r\n  \"YearsPreviousExperience\": 6,\r\n  \"Skills\": [\r\n    {\r\n      \"name\": \"python\",\r\n      \"year\": 6\r\n    },\r\n    {\r\n      \"name\": \"JavaScript\",\r\n      \"year\": 4\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}user/",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"UserId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"FirstName\": \"string\",\r\n  \"LastName\": \"string\",\r\n  \"Email\": \"user@example.com\",\r\n  \"YearsPreviousExperience\": 0,\r\n  \"Skills\": {\r\n    \"name\": \"python\",\r\n    \"year\": 2\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}user/{{USER}}?userid={{USER}}",
+							"host": [
+								"{{URL}}user"
+							],
+							"path": [
+								"{{USER}}"
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "{{USER}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vacancy",
+			"item": [
+				{
+					"name": "Get Vacancy Alll",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Vacancy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CompanyName\": {\r\n    \"CompanyName\": \"Company example\",\r\n    \"description\": \"\"\r\n  },\r\n  \"PositionName\": \"string\",\r\n  \"Salary\": 1,\r\n  \"Currency\": \"COP\",\r\n  \"VacancyLink\": \"https://www.test.com\",\r\n  \"RequiredSkills\": [\r\n    {\r\n      \"name\": \"python\",\r\n      \"year\": 2\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}vacancy/",
+							"host": [
+								"{{URL}}vacancy"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CompanyName\": {\r\n    \"CompanyName\": \"Company example\",\r\n    \"description\": \"\"\r\n  },\r\n  \"PositionName\": \"string\",\r\n  \"Salary\": 0,\r\n  \"Currency\": \"strin\",\r\n  \"VacancyLink\": \"string\",\r\n  \"RequiredSkills\": {\r\n    \"name\": \"python\",\r\n    \"year\": 2\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}vacancy/431d28a1-76f2-4af9-babd-c13d133d8b95?vacancyid=431d28a1-76f2-4af9-babd-c13d133d8b95",
+							"host": [
+								"{{URL}}vacancy"
+							],
+							"path": [
+								"431d28a1-76f2-4af9-babd-c13d133d8b95"
+							],
+							"query": [
+								{
+									"key": "vacancyid",
+									"value": "431d28a1-76f2-4af9-babd-c13d133d8b95"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}vacancy/431d28a1-76f2-4af9-babd-c13d133d8b95?vacancyid=431d28a1-76f2-4af9-babd-c13d133d8b95",
+							"host": [
+								"{{URL}}vacancy"
+							],
+							"path": [
+								"431d28a1-76f2-4af9-babd-c13d133d8b95"
+							],
+							"query": [
+								{
+									"key": "vacancyid",
+									"value": "431d28a1-76f2-4af9-babd-c13d133d8b95"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Math-Vacancy-User",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}match/?userid=a0e9ba2c-5506-44da-98d3-8c7e630462f8",
+							"host": [
+								"{{URL}}match"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "a0e9ba2c-5506-44da-98d3-8c7e630462f8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
